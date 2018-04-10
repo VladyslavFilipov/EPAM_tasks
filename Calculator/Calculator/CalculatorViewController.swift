@@ -11,8 +11,10 @@ import UIKit
 struct CalculatorsData {
     var previousValue: Double = 0
     var valueOnScreen: Double = 0
+    var valueDischarge: Double = 0
     var binaryOperationWhichIsPerforming: BinaryOperation.RawValue = ""
     var unaryOperationWhichIsPerforming: UnaryOperation.RawValue = ""
+    var previousValueMutated: Bool = false
     var operationIsPerforming: Bool = false
     var dotIsInTheNumber: Bool = false
 }
@@ -46,59 +48,63 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var screenWithOperationsLabel: UILabel!
     
     @IBAction func numberButtonTapped(_ sender: UIButton) {
-        guard let numberButtonLabelText =  sender.titleLabel?.text else { return }
         if !calculator.operationIsPerforming {
-            if screenWithNumbersLabel.text != "0" {
-                numberInput(numberButtonLabelText)
+            if calculator.valueOnScreen != 0 {
+                if !calculator.dotIsInTheNumber {
+                    numberInputIfContinueInputing(sender.tag)
+                    print("3")
+                } else {
+                    numberInputIfDotIsInTheNumber(sender.tag)
+                    print("4")
+                }
             } else {
-                screenWithNumbersLabel.text = numberButtonLabelText
+                numberInputIfStartInputing(sender.tag)
             }
-            
-            guard let screenLabelText = screenWithNumbersLabel.text else { return }
-            if let neededNumber = Double(screenLabelText) {
-                calculator.valueOnScreen = neededNumber
-            } else { return }
-            
-        } else {
+        } else if calculator.operationIsPerforming && !calculator.dotIsInTheNumber {
             resetCalculatorsLogic()
-            screenWithNumbersLabel.text = numberButtonLabelText
+            numberInputIfStartInputing(sender.tag)
+            print("1")
+        } else if calculator.operationIsPerforming && calculator.dotIsInTheNumber{
+            resetCalculatorsLogic()
+            calculator.valueDischarge = 1
+            numberInputIfDotIsInTheNumber(sender.tag)
+            calculator.dotIsInTheNumber = true
+            print("2")
         }
     }
     
-    private func numberInput(_ numberText: String) {
-        guard let screenLabelText = screenWithNumbersLabel.text else { return }
-        screenWithNumbersLabel.text = screenLabelText + numberText
-        calculator.valueOnScreen = Double(screenLabelText)!
+    private func numberInputIfContinueInputing(_ numberText: Int) {
+        calculator.valueOnScreen = calculator.valueOnScreen * 10 + Double(numberText)
+        calculator.valueDischarge += 1
+        cutZeroIfNeededIn(calculator.valueOnScreen)
+    }
+    
+    private func numberInputIfDotIsInTheNumber(_ numberText: Int) {
+        calculator.valueOnScreen = calculator.valueOnScreen + Double(numberText) / pow(10, calculator.valueDischarge)
+        calculator.valueDischarge += 1
+        cutZeroIfNeededIn(calculator.valueOnScreen)
+    }
+    
+    private func numberInputIfStartInputing(_ numberText: Int) {
+        calculator.valueOnScreen = Double(numberText)
+        cutZeroIfNeededIn(calculator.valueOnScreen)
+        calculator.operationIsPerforming = false
     }
     
     @IBAction func binaryOperationButtonTapped(_ sender: UIButton) {
-        guard let numberButtonLabelText = sender.titleLabel?.text else { return }
-        if !calculator.operationIsPerforming {
-            let result = binaryOperationPerforming()
-            cutZeroIfNeededIn(result)
-        }
-        resetCalculatorsLogic()
-        
-        guard let screenLabelText = screenWithNumbersLabel.text else { return }
-        if let neededNumber = Double(screenLabelText) {
-            calculator.valueOnScreen = neededNumber
-        } else { return }
-        
-        calculator.binaryOperationWhichIsPerforming = numberButtonLabelText
+        guard let operation = sender.titleLabel?.text else { return }
+        equality()
         calculator.operationIsPerforming = true
+        calculator.previousValueMutated = true
+        calculator.dotIsInTheNumber = false
+        calculator.binaryOperationWhichIsPerforming = operation
     }
     
     @IBAction func unaryOperationButtonTapped(_ sender: UIButton) {
-        guard let screenLabelText = screenWithNumbersLabel.text else { return }
         guard let numberButtonTitleLabelText = sender.titleLabel?.text else { return }
-        
-        if let neededNumber = Double(screenLabelText) {
-            calculator.valueOnScreen = neededNumber
-        } else { return }
-        
-        var result = Double()
-        
         guard let unaryOperation = UnaryOperation(rawValue: numberButtonTitleLabelText) else { return }
+    
+        var result = Double()
         
         switch unaryOperation {
         case .sin:
@@ -116,31 +122,39 @@ class CalculatorViewController: UIViewController {
         case .ePowToX:
             result = pow(2.781, calculator.valueOnScreen)
         case .invert:
-            if screenLabelText != "0"  {
+            if calculator.valueOnScreen != 0  {
                 result = calculator.valueOnScreen * (-1)
             } else {
                 result = 0
             }
         }
         cutZeroIfNeededIn(result)
+        calculator.valueOnScreen = result
     }
     
     @IBAction func equilButtonTapped(_ sender: UIButton) {
-        let result = binaryOperationPerforming()
-        cutZeroIfNeededIn(result)
-        resetCalculatorsValues()
-        calculator.operationIsPerforming = true
+        equality()
+        calculator.operationIsPerforming = false
+        calculator.previousValueMutated = false
+        calculator.binaryOperationWhichIsPerforming = ""
+    }
+    
+    private func equality() {
+        var result = calculator.valueOnScreen
+        if !calculator.operationIsPerforming && calculator.previousValueMutated {
+            print(binaryOperationPerforming())
+            result = binaryOperationPerforming()
+            cutZeroIfNeededIn(result)
+            calculator.valueOnScreen = result
+        }
+        calculator.previousValue = result
+        calculator.valueDischarge = 0
     }
     
     private func binaryOperationPerforming() -> Double {
-        guard let screenLabelText = screenWithNumbersLabel.text else { return 0 }
-        if let neededNumber = Double(screenLabelText) {
-            calculator.valueOnScreen = neededNumber
-        } else { return 0 }
+        guard let binaryOperation = BinaryOperation(rawValue: calculator.binaryOperationWhichIsPerforming) else { return 0 }
         
         var result = Double()
-        
-        guard let binaryOperation = BinaryOperation(rawValue: calculator.binaryOperationWhichIsPerforming) else { return 0}
         
         switch binaryOperation {
         case .add:
@@ -156,25 +170,23 @@ class CalculatorViewController: UIViewController {
         case .xPowToY:
             result = pow(calculator.previousValue, calculator.valueOnScreen)
         }
+        
         return result
     }
     
-    private func cutZeroIfNeededIn(_ result: Double) {
-        screenWithNumbersLabel.text = result.truncatingRemainder(dividingBy: 1.0) == 0 ? String(format: "%.0f", result) :
-            String(result)
-            calculator.dotIsInTheNumber = true
+    private func cutZeroIfNeededIn(_ value: Double) {
+        screenWithNumbersLabel.text = value.truncatingRemainder(dividingBy: 1.0) == 0 ? String(format: "%g", value) :
+        String(value)
     }
     
     @IBAction func dotInputButtonTapped(_ sender: UIButton) {
-        guard let screenLabelText = screenWithNumbersLabel.text else { return }
-        if calculator.operationIsPerforming {
-            screenWithNumbersLabel.text = "0."
-        } else {
-            screenWithNumbersLabel.text = screenLabelText + "."
-        }
-        calculator.valueOnScreen = Double(screenLabelText + "0")!
         calculator.dotIsInTheNumber = true
-        calculator.operationIsPerforming = false
+        if !calculator.operationIsPerforming {
+            screenWithNumbersLabel.text = String(calculator.valueOnScreen)
+        } else {
+            calculator.valueOnScreen = 0
+            screenWithNumbersLabel.text = String(calculator.valueOnScreen)
+        }
     }
     
     @IBAction func resetCalculatorButtonTapped(_ sender: UIButton) {
@@ -191,6 +203,7 @@ class CalculatorViewController: UIViewController {
     private func resetCalculatorsValues() {
         calculator.previousValue = 0
         calculator.valueOnScreen = 0
+        calculator.valueDischarge = 0
         calculator.binaryOperationWhichIsPerforming = ""
     }
     

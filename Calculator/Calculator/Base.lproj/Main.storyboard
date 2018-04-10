@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,14 +15,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Gvh-OA-Icn">
-                                <rect key="frame" x="16" y="20" width="568" height="120"/>
+                                <rect key="frame" x="16" y="0.0" width="635" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WCR-ZX-z5P">
-                                        <rect key="frame" x="0.0" y="0.0" width="568" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="635" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="AyE-hX-JVZ"/>
                                         </constraints>
@@ -27,7 +31,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVo-jR-2pd">
-                                        <rect key="frame" x="0.0" y="60" width="568" height="60"/>
+                                        <rect key="frame" x="0.0" y="60" width="635" height="60"/>
                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="55"/>
                                         <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -35,65 +39,65 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="0dC-7s-n6z">
-                                <rect key="frame" x="0.0" y="140.5" width="600" height="459.5"/>
+                                <rect key="frame" x="0.0" y="120.5" width="667" height="254.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YZJ-Hl-J4v">
-                                        <rect key="frame" x="0.0" y="0.0" width="391.5" height="459.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="435.5" height="254.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="a9l-9E-Dsf">
-                                                <rect key="frame" x="0.0" y="0.0" width="391.5" height="92"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="435.5" height="51"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgU-UH-NAZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="92"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="AC">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="resetCalculatorButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OXt-aJ-TEU"/>
+                                                            <action selector="resetCalculatorButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vwH-02-PTr"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZ9-3M-vaV">
-                                                        <rect key="frame" x="98" y="0.0" width="98" height="92"/>
+                                                        <rect key="frame" x="109" y="0.0" width="108.5" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="+/-">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vjb-Kr-l7r"/>
+                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XA8-GS-GNl"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOy-Sf-uxe">
-                                                        <rect key="frame" x="196" y="0.0" width="98" height="92"/>
+                                                        <rect key="frame" x="217.5" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="%">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iBk-CR-gpI"/>
+                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vbB-Ji-Scp"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCY-PV-u80">
-                                                        <rect key="frame" x="294" y="0.0" width="97.5" height="92"/>
+                                                        <rect key="frame" x="326.5" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="/">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8g1-Oq-dzS"/>
+                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g0r-q2-l9z"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8lF-rc-0xG">
-                                                <rect key="frame" x="0.0" y="92" width="391.5" height="92"/>
+                                                <rect key="frame" x="0.0" y="51" width="435.5" height="51"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjL-Xk-trH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="92"/>
+                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjL-Xk-trH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
@@ -102,179 +106,179 @@
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YnS-9y-Ml2"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gaX-bx-PBd"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p4-Us-B3H">
-                                                        <rect key="frame" x="98" y="0.0" width="98" height="92"/>
+                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p4-Us-B3H">
+                                                        <rect key="frame" x="109" y="0.0" width="108.5" height="51"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Ob-7K-spV"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ob5-MF-cEN"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJE-NW-DkQ">
-                                                        <rect key="frame" x="196" y="0.0" width="98" height="92"/>
+                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJE-NW-DkQ">
+                                                        <rect key="frame" x="217.5" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eli-yk-XGA"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L3c-0y-wXJ"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGQ-Lf-ztC">
-                                                        <rect key="frame" x="294" y="0.0" width="97.5" height="92"/>
+                                                        <rect key="frame" x="326.5" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="*">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CX4-jh-RzN"/>
+                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uth-ns-GHW"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QDv-67-NZz">
-                                                <rect key="frame" x="0.0" y="184" width="391.5" height="91.5"/>
+                                                <rect key="frame" x="0.0" y="102" width="435.5" height="50.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0V-Zj-yZa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="91.5"/>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0V-Zj-yZa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="50.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c58-Ma-sfx"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gj0-II-vEF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFW-Ny-ZAQ">
-                                                        <rect key="frame" x="98" y="0.0" width="98" height="91.5"/>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFW-Ny-ZAQ">
+                                                        <rect key="frame" x="109" y="0.0" width="108.5" height="50.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f2c-gh-FpW"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6RP-FT-LBW"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uym-Ug-0nN">
-                                                        <rect key="frame" x="196" y="0.0" width="98" height="91.5"/>
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uym-Ug-0nN">
+                                                        <rect key="frame" x="217.5" y="0.0" width="109" height="50.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8VU-3I-KqJ"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iv2-Uc-VTK"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyM-1M-EeQ">
-                                                        <rect key="frame" x="294" y="0.0" width="97.5" height="91.5"/>
+                                                        <rect key="frame" x="326.5" y="0.0" width="109" height="50.5"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="-">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qac-u1-B2k"/>
+                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OBm-v9-5FQ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-d2-LHn">
-                                                <rect key="frame" x="0.0" y="275.5" width="391.5" height="92"/>
+                                                <rect key="frame" x="0.0" y="152.5" width="435.5" height="51"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAS-0y-nUt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="92"/>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAS-0y-nUt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eZz-0f-RBb"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="04h-Ir-GOU"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCf-d5-J1Y">
-                                                        <rect key="frame" x="98" y="0.0" width="98" height="92"/>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCf-d5-J1Y">
+                                                        <rect key="frame" x="109" y="0.0" width="108.5" height="51"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xTb-1U-DGo"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="am1-xC-qBI"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btf-2v-uUy">
-                                                        <rect key="frame" x="196" y="0.0" width="98" height="92"/>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btf-2v-uUy">
+                                                        <rect key="frame" x="217.5" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lHK-X2-GC1"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gC2-Tk-rSM"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvD-zN-r5n">
-                                                        <rect key="frame" x="294" y="0.0" width="97.5" height="92"/>
+                                                        <rect key="frame" x="326.5" y="0.0" width="109" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="+">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qWF-hD-n3s"/>
+                                                            <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Mt-RZ-SBx"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eCe-Pf-boE">
-                                                <rect key="frame" x="0.0" y="367.5" width="391.5" height="92"/>
+                                                <rect key="frame" x="0.0" y="203.5" width="435.5" height="51"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ml3-17-icC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="196" height="92"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ml3-17-icC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="217.5" height="51"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fbo-Y3-sdH"/>
+                                                            <action selector="numberButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nBQ-HY-ENa"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5bq-zh-usD">
-                                                        <rect key="frame" x="196" y="0.0" width="195.5" height="92"/>
+                                                        <rect key="frame" x="217.5" y="0.0" width="218" height="51"/>
                                                         <subviews>
                                                             <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBg-2v-pIs">
-                                                                <rect key="frame" x="0.0" y="0.0" width="98" height="92"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="109" height="51"/>
                                                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                                 <state key="normal" title=".">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="dotInputButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jO2-78-9sO"/>
+                                                                    <action selector="dotInputButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="APT-GM-Z7W"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MvL-JO-YeK">
-                                                                <rect key="frame" x="98" y="0.0" width="97.5" height="92"/>
+                                                                <rect key="frame" x="109" y="0.0" width="109" height="51"/>
                                                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                                 <state key="normal" title="=">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="equilButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hvT-Yb-boj"/>
+                                                                    <action selector="equilButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jLM-Gd-BbM"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -284,109 +288,109 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7bw-5x-NNs">
-                                        <rect key="frame" x="391.5" y="0.0" width="208.5" height="459.5"/>
+                                        <rect key="frame" x="435.5" y="0.0" width="231.5" height="254.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Lwz-Gr-Ifc">
-                                                <rect key="frame" x="0.0" y="0.0" width="208.5" height="92"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="231.5" height="51"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgp-oL-4g6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="104.5" height="92"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="sin">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ijO-TE-tQy"/>
+                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jlg-pS-4fd"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-5I-aGF">
-                                                        <rect key="frame" x="104.5" y="0.0" width="104" height="92"/>
+                                                        <rect key="frame" x="115.5" y="0.0" width="116" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="cos">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bmW-bd-4l9"/>
+                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qDw-iI-Hsl"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="h4d-2M-W5i">
-                                                <rect key="frame" x="0.0" y="92" width="208.5" height="92"/>
+                                                <rect key="frame" x="0.0" y="51" width="231.5" height="51"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="109" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M01-nw-chF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="104.5" height="92"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="tg">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oeL-lG-yim"/>
+                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SEV-su-8kX"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="110" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05g-Ys-yWE">
-                                                        <rect key="frame" x="104.5" y="0.0" width="104" height="92"/>
+                                                        <rect key="frame" x="115.5" y="0.0" width="116" height="51"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="ctg">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YaC-iK-gMP"/>
+                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="boJ-Bg-RsY"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Xhu-g6-Btc">
-                                                <rect key="frame" x="0.0" y="184" width="208.5" height="91.5"/>
+                                                <rect key="frame" x="0.0" y="102" width="231.5" height="50.5"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6i-hd-C7h">
-                                                        <rect key="frame" x="0.0" y="0.0" width="104.5" height="91.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="50.5"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="x²">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1eL-sy-Z6N"/>
+                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n1b-xi-Sb2"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="112" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdM-9a-QRw">
-                                                        <rect key="frame" x="104.5" y="0.0" width="104" height="91.5"/>
+                                                        <rect key="frame" x="115.5" y="0.0" width="116" height="50.5"/>
                                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                         <state key="normal" title="x³">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rp5-0w-sos"/>
+                                                            <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WhC-aC-HW8"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" tag="113" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyO-8V-XmN">
-                                                <rect key="frame" x="0.0" y="275.5" width="208.5" height="92"/>
+                                                <rect key="frame" x="0.0" y="152.5" width="231.5" height="51"/>
                                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                 <state key="normal" title="xʸ">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c4h-KR-xBZ"/>
+                                                    <action selector="binaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GIy-Ya-lHr"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="114" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D3-ON-Qls">
-                                                <rect key="frame" x="0.0" y="367.5" width="208.5" height="92"/>
+                                                <rect key="frame" x="0.0" y="203.5" width="231.5" height="51"/>
                                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="35"/>
                                                 <state key="normal" title="eˣ">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZPa-dT-dqG"/>
+                                                    <action selector="unaryOperationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NrL-KH-Lvp"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -420,7 +424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="398" y="113"/>
+            <point key="canvasLocation" x="456" y="116"/>
         </scene>
     </scenes>
 </document>
