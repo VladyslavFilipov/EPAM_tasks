@@ -66,6 +66,7 @@ class CalculatorViewController: UIViewController {
     var calculator = CalculatorsData()
     var binaryOperation = BinaryOperation.self
     var unaryOperation = UnaryOperation.self
+    var unexpectedErrorString = "Unexpected error"
     
     @IBOutlet weak var screenWithNumbersLabel: UILabel!
     @IBOutlet weak var screenWithOperationsLabel: UILabel!
@@ -81,7 +82,7 @@ class CalculatorViewController: UIViewController {
                         resetCalculatorsLogic()
                         resetCalculatorsValues()
                     } catch {
-                        screenWithNumbersLabel.text = "Unexpected error"
+                        screenWithNumbersLabel.text = unexpectedErrorString
                         resetCalculatorsLogic()
                         resetCalculatorsValues()
                     }
@@ -156,7 +157,7 @@ class CalculatorViewController: UIViewController {
             resetCalculatorsLogic()
             resetCalculatorsValues()
         } catch {
-            screenWithNumbersLabel.text = "Unexpected error"
+            screenWithNumbersLabel.text = unexpectedErrorString
             resetCalculatorsLogic()
             resetCalculatorsValues()
         }
@@ -238,7 +239,7 @@ class CalculatorViewController: UIViewController {
                 resetCalculatorsLogic()
                 resetCalculatorsValues()
             } catch {
-                screenWithNumbersLabel.text = "Unexpected error"
+                screenWithNumbersLabel.text = unexpectedErrorString
                 resetCalculatorsLogic()
                 resetCalculatorsValues()
             }
