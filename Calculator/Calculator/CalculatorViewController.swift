@@ -39,6 +39,29 @@ enum UnaryOperation: String {
     case ctg = "ctg"
 }
 
+enum CalculatorError: Error {
+    case operationHaveNoSense
+    case divideOn0
+    case wrongTgValue
+    case wrongCtgValue
+    case infinityValue
+    
+    var localizedDescription: String {
+        switch self {
+        case .operationHaveNoSense:
+            return "Operations with inf will give you inf"
+        case .divideOn0:
+            return "Error: divide on 0"
+        case .wrongTgValue:
+            return "Error: tg haven`t such values"
+        case .wrongCtgValue:
+            return "Error: ctg haven`t such values"
+        case .infinityValue:
+            return "Error: your`s value goes to inf"
+        }
+    }
+}
+
 class CalculatorViewController: UIViewController {
     var calculator = CalculatorsData()
     var binaryOperation = BinaryOperation.self
@@ -51,11 +74,19 @@ class CalculatorViewController: UIViewController {
         if !calculator.operationIsPerforming {
             if calculator.valueOnScreen != 0 {
                 if !calculator.dotIsInTheNumber {
-                    numberInputIfContinueInputing(sender.tag)
-                    print("3")
+                    do {
+                        try numberInputIfContinueInputing(sender.tag)
+                    } catch CalculatorError.infinityValue {
+                        screenWithNumbersLabel.text = CalculatorError.infinityValue.localizedDescription
+                        resetCalculatorsLogic()
+                        resetCalculatorsValues()
+                    } catch {
+                        screenWithNumbersLabel.text = "Unexpected error"
+                        resetCalculatorsLogic()
+                        resetCalculatorsValues()
+                    }
                 } else {
                     numberInputIfDotIsInTheNumber(sender.tag)
-                    print("4")
                 }
             } else {
                 numberInputIfStartInputing(sender.tag)
@@ -63,20 +94,22 @@ class CalculatorViewController: UIViewController {
         } else if calculator.operationIsPerforming && !calculator.dotIsInTheNumber {
             resetCalculatorsLogic()
             numberInputIfStartInputing(sender.tag)
-            print("1")
         } else if calculator.operationIsPerforming && calculator.dotIsInTheNumber{
             resetCalculatorsLogic()
             calculator.valueDischarge = 1
             numberInputIfDotIsInTheNumber(sender.tag)
             calculator.dotIsInTheNumber = true
-            print("2")
         }
     }
     
-    private func numberInputIfContinueInputing(_ numberText: Int) {
+    private func numberInputIfContinueInputing(_ numberText: Int) throws {
         calculator.valueOnScreen = calculator.valueOnScreen * 10 + Double(numberText)
         calculator.valueDischarge += 1
-        cutZeroIfNeededIn(calculator.valueOnScreen)
+        if calculator.valueOnScreen == Double.infinity {
+            throw CalculatorError.infinityValue
+        } else {
+            cutZeroIfNeededIn(calculator.valueOnScreen)
+        }
     }
     
     private func numberInputIfDotIsInTheNumber(_ numberText: Int) {
@@ -100,36 +133,81 @@ class CalculatorViewController: UIViewController {
         calculator.binaryOperationWhichIsPerforming = operation
     }
     
-    @IBAction func unaryOperationButtonTapped(_ sender: UIButton) {
-        guard let numberButtonTitleLabelText = sender.titleLabel?.text else { return }
-        guard let unaryOperation = UnaryOperation(rawValue: numberButtonTitleLabelText) else { return }
+    @IBAction func unaryOperationButtonTapped(_ sender: UIButton)  {
+        do {
+            var result = Double()
+            try result = unaryOperationPerforming(sender.titleLabel?.text)
+            cutZeroIfNeededIn(result)
+            calculator.valueOnScreen = result
+        } catch CalculatorError.operationHaveNoSense {
+            screenWithNumbersLabel.text = CalculatorError.operationHaveNoSense.localizedDescription
+            resetCalculatorsLogic()
+            resetCalculatorsValues()
+        } catch CalculatorError.wrongTgValue {
+            screenWithNumbersLabel.text = CalculatorError.wrongTgValue.localizedDescription
+            resetCalculatorsValues()
+            resetCalculatorsLogic()
+        } catch CalculatorError.wrongCtgValue {
+            screenWithNumbersLabel.text = CalculatorError.wrongCtgValue.localizedDescription
+            resetCalculatorsValues()
+            resetCalculatorsLogic()
+        } catch CalculatorError.infinityValue {
+            screenWithNumbersLabel.text = CalculatorError.infinityValue.localizedDescription
+            resetCalculatorsLogic()
+            resetCalculatorsValues()
+        } catch {
+            screenWithNumbersLabel.text = "Unexpected error"
+            resetCalculatorsLogic()
+            resetCalculatorsValues()
+        }
+    }
     
+    private func unaryOperationPerforming(_ operationButtonTitleText: String?) throws -> Double{
+        guard let numberButtonTitleLabelText = operationButtonTitleText else { return 0 }
+        guard let unaryOperation = UnaryOperation(rawValue: numberButtonTitleLabelText) else { return 0 }
+        
         var result = Double()
         
-        switch unaryOperation {
-        case .sin:
-            result = sin(calculator.valueOnScreen)
-        case .cos:
-            result = cos(calculator.valueOnScreen)
-        case .tg:
-            result = tan(calculator.valueOnScreen)
-        case .ctg:
-            result = pow(tan(calculator.valueOnScreen), -1)
-        case .xPowTo2:
-            result = pow(calculator.valueOnScreen, 2)
-        case .xPowTo3:
-            result = pow(calculator.valueOnScreen, 3)
-        case .ePowToX:
-            result = pow(2.781, calculator.valueOnScreen)
-        case .invert:
-            if calculator.valueOnScreen != 0  {
-                result = calculator.valueOnScreen * (-1)
-            } else {
-                result = 0
+        if calculator.valueOnScreen == Double.infinity {
+            throw CalculatorError.operationHaveNoSense
+        } else {
+            switch unaryOperation {
+            case .sin:
+                result = sin(calculator.valueOnScreen)
+            case .cos:
+                result = cos(calculator.valueOnScreen)
+            case .tg:
+                if calculator.valueOnScreen != 90 || calculator.valueOnScreen != 270 {
+                    result = tan(calculator.valueOnScreen)
+                } else {
+                    throw CalculatorError.wrongTgValue
+                }
+            case .ctg:
+                if calculator.valueOnScreen != 0 || calculator.valueOnScreen != 180 || calculator.valueOnScreen != 360 {
+                    result = pow(tan(calculator.valueOnScreen), -1)
+                } else {
+                    throw CalculatorError.wrongCtgValue
+                }
+            case .xPowTo2:
+                result = pow(calculator.valueOnScreen, 2)
+            case .xPowTo3:
+                result = pow(calculator.valueOnScreen, 3)
+            case .ePowToX:
+                result = pow(2.781, calculator.valueOnScreen)
+            case .invert:
+                if calculator.valueOnScreen != 0  {
+                    result = calculator.valueOnScreen * (-1)
+                } else {
+                    result = 0
+                }
             }
         }
-        cutZeroIfNeededIn(result)
-        calculator.valueOnScreen = result
+        
+        if result == Double.infinity {
+            throw CalculatorError.infinityValue
+        } else {
+            return result
+        }
     }
     
     @IBAction func equilButtonTapped(_ sender: UIButton) {
@@ -142,36 +220,66 @@ class CalculatorViewController: UIViewController {
     private func equality() {
         var result = calculator.valueOnScreen
         if !calculator.operationIsPerforming && calculator.previousValueMutated {
-            print(binaryOperationPerforming())
-            result = binaryOperationPerforming()
-            cutZeroIfNeededIn(result)
-            calculator.valueOnScreen = result
+            
+            do {
+                try result = binaryOperationPerforming()
+                cutZeroIfNeededIn(result)
+                calculator.valueOnScreen = result
+            } catch CalculatorError.operationHaveNoSense {
+                screenWithNumbersLabel.text = CalculatorError.operationHaveNoSense.localizedDescription
+                resetCalculatorsLogic()
+                resetCalculatorsValues()
+            } catch CalculatorError.divideOn0 {
+                screenWithNumbersLabel.text = CalculatorError.divideOn0.localizedDescription
+                resetCalculatorsLogic()
+                resetCalculatorsValues()
+            } catch CalculatorError.infinityValue {
+                screenWithNumbersLabel.text = CalculatorError.infinityValue.localizedDescription
+                resetCalculatorsLogic()
+                resetCalculatorsValues()
+            } catch {
+                screenWithNumbersLabel.text = "Unexpected error"
+                resetCalculatorsLogic()
+                resetCalculatorsValues()
+            }
         }
         calculator.previousValue = result
         calculator.valueDischarge = 0
     }
     
-    private func binaryOperationPerforming() -> Double {
+    private func binaryOperationPerforming() throws -> Double {
         guard let binaryOperation = BinaryOperation(rawValue: calculator.binaryOperationWhichIsPerforming) else { return 0 }
         
         var result = Double()
         
-        switch binaryOperation {
-        case .add:
-            result = calculator.previousValue + calculator.valueOnScreen
-        case .substract:
-            result = calculator.previousValue - calculator.valueOnScreen
-        case .multiply:
-            result = calculator.previousValue * calculator.valueOnScreen
-        case .divide:
-            result = calculator.previousValue / calculator.valueOnScreen
-        case .percent:
-            result = (calculator.previousValue / calculator.valueOnScreen) * 100
-        case .xPowToY:
-            result = pow(calculator.previousValue, calculator.valueOnScreen)
+        if calculator.previousValue == Double.infinity {
+            throw CalculatorError.operationHaveNoSense
+        } else {
+            switch binaryOperation {
+            case .add:
+                result = calculator.previousValue + calculator.valueOnScreen
+            case .substract:
+                result = calculator.previousValue - calculator.valueOnScreen
+            case .multiply:
+                result = calculator.previousValue * calculator.valueOnScreen
+            case .divide:
+                if calculator.valueOnScreen != 0 {
+                    result = calculator.previousValue / calculator.valueOnScreen
+                } else {
+                    throw CalculatorError.divideOn0
+                }
+            case .percent:
+                result = (calculator.previousValue / calculator.valueOnScreen) * 100
+            case .xPowToY:
+                result = pow(calculator.previousValue, calculator.valueOnScreen)
+            }
         }
         
-        return result
+        if result == Double.infinity {
+            throw CalculatorError.infinityValue
+        } else {
+            return result
+        }
     }
     
     private func cutZeroIfNeededIn(_ value: Double) {
@@ -195,12 +303,12 @@ class CalculatorViewController: UIViewController {
         resetCalculatorsLogic()
     }
     
-    private func resetCalculatorsLogic() {
+    func resetCalculatorsLogic() {
         calculator.operationIsPerforming = false
         calculator.dotIsInTheNumber = false
     }
     
-    private func resetCalculatorsValues() {
+    func resetCalculatorsValues() {
         calculator.previousValue = 0
         calculator.valueOnScreen = 0
         calculator.valueDischarge = 0
